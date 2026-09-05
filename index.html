@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>On prend un verre ? — Sarthe</title>
+<style>
+  :root{
+    --ink:#071426;
+    --paper:#f8fbfc;
+    --cyan:#19c7d4;
+    --cyan2:#0aa4b3;
+    --orange:#ff6b1a;
+    --red:#ef3e2f;
+    --amber:#ffb11b;
+    --muted:#657383;
+    --line:#dfe7eb;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:
+      radial-gradient(circle at 12% 8%, rgba(25,199,212,.18), transparent 27%),
+      radial-gradient(circle at 90% 22%, rgba(255,107,26,.18), transparent 25%),
+      var(--paper);color:var(--ink)}
+  .page{max-width:820px;margin:0 auto;padding:24px 18px 56px}
+  .hero{background:linear-gradient(145deg,#fff 0%,#f8ffff 58%,#fff7f0 100%);border:1px solid rgba(7,20,38,.08);border-radius:30px;padding:28px 24px 26px;box-shadow:0 16px 50px rgba(7,20,38,.08);overflow:hidden;position:relative}
+  .hero:after{content:"";position:absolute;right:-80px;top:-95px;width:230px;height:230px;border-radius:50%;border:42px solid rgba(255,107,26,.09)}
+  .eyebrow{display:inline-flex;gap:8px;align-items:center;background:#08172a;color:white;padding:9px 13px;border-radius:999px;font-weight:900;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+  h1{font-size:clamp(42px,9vw,74px);line-height:.92;letter-spacing:-.055em;margin:18px 0 10px;text-transform:uppercase;max-width:700px}
+  h1 span{color:var(--orange)}
+  .lead{font-size:clamp(20px,4.8vw,32px);line-height:1.03;font-weight:900;margin:8px 0 10px;max-width:680px}
+  .local{font-size:16px;font-weight:800;color:var(--cyan2);text-transform:uppercase;letter-spacing:.03em;margin-top:8px}
+  .appt{display:block;margin:24px 0 0;background:linear-gradient(100deg,var(--orange),#ff8b20);color:white;text-decoration:none;text-align:center;padding:18px 18px;border-radius:17px;font-size:21px;font-weight:950;box-shadow:0 10px 25px rgba(255,107,26,.28);border:3px solid white;outline:2px solid rgba(255,107,26,.35)}
+  .appt small{display:block;font-size:11px;font-weight:800;opacity:.92;margin-top:3px;letter-spacing:.05em;text-transform:uppercase}
+  .stand{margin-top:12px;font-size:18px;font-weight:900;color:var(--ink);text-align:center;line-height:1.2}
+  .stand span{color:var(--cyan2)}
+  .section-title{margin:34px 2px 16px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+  .section-title h2{font-size:clamp(26px,5.4vw,40px);line-height:.98;letter-spacing:-.035em;margin:0;text-transform:uppercase}
+  .liters{flex:0 0 auto;background:#e8fbfd;color:#066c77;border:1px solid #bfeff4;padding:9px 11px;border-radius:12px;font-size:12px;font-weight:900;text-align:center}
+  .list{display:grid;gap:10px}
+  .item{display:grid;grid-template-columns:42px 58px 1fr auto;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:11px 13px;box-shadow:0 5px 16px rgba(7,20,38,.045)}
+  .rank{font-size:18px;font-weight:950;color:#9aa6b0;text-align:center}
+  .icon{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-weight:950;font-size:15px;border:2px solid currentColor;background:#fff}
+  .i-red{color:var(--red);background:#fff4f2}.i-orange{color:var(--orange);background:#fff7ef}.i-amber{color:#bd7700;background:#fff9e9}.i-cyan{color:#087f8c;background:#ecfcfd}.i-ink{color:#22334b;background:#f4f6f8}
+  .name{font-size:16px;font-weight:950;line-height:1.05}
+  .meta{font-size:11px;color:var(--muted);font-weight:700;margin-top:4px;line-height:1.2}
+  .qty{text-align:right;font-size:23px;font-weight:950;letter-spacing:-.035em;white-space:nowrap}
+  .qty small{font-size:11px;letter-spacing:0;color:var(--muted);display:block;margin-top:2px;font-weight:800}
+  .warning{margin:18px 0 0;background:#08172a;color:#fff;border-radius:20px;padding:18px 18px 17px;position:relative;overflow:hidden}
+  .warning strong{font-size:21px;line-height:1.06;display:block;max-width:620px}.warning p{margin:8px 0 0;color:#d9e2eb;font-size:13px;line-height:1.45}
+  .warning .accent{color:#39d7e1}
+  .foot{font-size:10.5px;line-height:1.45;color:#687684;margin:16px 4px 0}
+  .foot b{color:#29374a}
+  .note{margin-top:10px;padding:10px 12px;border-radius:12px;background:#fff4de;color:#745000;font-size:10.5px;line-height:1.4;border:1px solid #ffe0a4}
+  @media(max-width:520px){
+    .page{padding:10px 10px 34px}.hero{padding:22px 17px 20px;border-radius:24px}
+    .item{grid-template-columns:32px 50px 1fr auto;padding:9px 9px}.icon{width:46px;height:46px;border-radius:14px;font-size:13px}.rank{font-size:15px}.name{font-size:14px}.qty{font-size:19px}.meta{font-size:10px}
+    .section-title{align-items:flex-start;flex-direction:column}.liters{text-align:left}
+    .stand{font-size:16px}
+  }
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="hero">
+    <div class="eyebrow">💧 Résultats indicatifs — Sarthe</div>
+    <h1>ON PREND<br><span>UN VERRE ?</span></h1>
+    <div class="lead">UN PEU TOUS LES JOURS.<br>ÇA DONNE QUOI SUR UNE VIE ?</div>
+    <div class="local">En moyenne en Sarthe</div>
+    <a class="appt" href="https://www.adoucisseurs-ecowater-le-mans.fr/demande-de-rendez-vous" target="_blank" rel="noopener">PRENDRE RENDEZ-VOUS
+      <small>Parler de votre eau avec un conseiller EcoWater</small>
+    </a>
+    <div class="stand">ou venez <span>prendre un verre d’eau filtrée</span> sur le stand</div>
+  </section>
+
+  <div class="section-title">
+    <h2>Sur une vie<br>pour boire & cuisiner</h2>
+    <div class="liters">≈ 87 600 L d’eau<br><span style="font-weight:700">hypothèse moyenne : boisson + cuisson</span></div>
+  </div>
+
+  <section class="list" aria-label="Classement indicatif des substances surveillées">
+    <article class="item">
+      <div class="rank">1</div><div class="icon i-orange">NO₃</div>
+      <div><div class="name">Nitrates</div><div class="meta">Surveillés notamment pour les nourrissons et femmes enceintes.</div></div>
+      <div class="qty">1 577 g<small>≈ 18 mg/L</small></div>
+    </article>
+    <article class="item">
+      <div class="rank">2</div><div class="icon i-cyan">Cl₂</div>
+      <div><div class="name">Chlore résiduel</div><div class="meta">Désinfectant ; la quantité au robinet est bien plus faible que la dose de traitement.</div></div>
+      <div class="qty">35 g<small>≈ 0,40 mg/L</small></div>
+    </article>
+    <article class="item">
+      <div class="rank">3</div><div class="icon i-red">THM</div>
+      <div><div class="name">Trihalométhanes</div><div class="meta">Sous-produits pouvant se former lors de la chloration.</div></div>
+      <div class="qty">2,2 g<small>≈ 25 µg/L</small></div>
+    </article>
+    <article class="item">
+      <div class="rank">4</div><div class="icon i-red">Ni</div>
+      <div><div class="name">Nickel</div><div class="meta">Métal surveillé dans l’eau destinée à la consommation.</div></div>
+      <div class="qty">175 mg<small>≈ 2 µg/L</small></div>
+    </article>
+    <article class="item">
+      <div class="rank">5</div><div class="icon i-red">Pb</div>
+      <div><div class="name">Plomb</div><div class="meta">Métal toxique ; la réglementation vise à réduire l’exposition au maximum.</div></div>
+      <div class="qty">88 mg<small>≈ 1 µg/L</small></div>
+    </article>
+    <article class="item">
+      <div class="rank">6</div><div class="icon i-red">As</div>
+      <div><div class="name">Arsenic</div><div class="meta">Substance réglementée lorsqu’elle est détectée.</div></div>
+      <div class="qty">35 mg<small>≈ 0,40 µg/L</small></div>
+    </article>
+    <article class="item">
+      <div class="rank">7</div><div class="icon i-red">Cd</div>
+      <div><div class="name">Cadmium</div><div class="meta">Métal réglementé ; certaines zones peuvent présenter des traces.</div></div>
+      <div class="qty">18 mg<small>≈ 0,20 µg/L</small></div>
+    </article>
+    <article class="item">
+      <div class="rank">8</div><div class="icon i-amber">🌿</div>
+      <div><div class="name">Résidus de pesticides détectés</div><div class="meta">Somme illustrative des traces effectivement mesurées.</div></div>
+      <div class="qty">1,1 mg<small>≈ 0,012 µg/L</small></div>
+    </article>
+    <article class="item">
+      <div class="rank">9</div><div class="icon i-ink">PFAS</div>
+      <div><div class="name">PFAS détectés</div><div class="meta">« Polluants éternels » : contrôle renforcé depuis 2026.</div></div>
+      <div class="qty">0,24 mg<small>≈ 0,0027 µg/L</small></div>
+    </article>
+  </section>
+
+  <section class="warning">
+    <strong>ÇA FAIT BEAUCOUP DE CHOSES POUR <span class="accent">UN SIMPLE VERRE D’EAU.</span></strong>
+    <p>Ces chiffres expriment ce qui <b>transite dans l’eau consommée</b> sur une vie. Ils ne signifient pas que ces substances s’accumulent intégralement dans votre organisme.</p>
+  </section>
+
+  <p class="foot"><b>Base de calcul de la maquette :</b> estimation sur une vie pour la boisson et la cuisine. Les concentrations affichées sont une <b>simulation départementale provisoire</b> construite à partir d’ordres de grandeur observés dans des résultats publics de contrôle sanitaire en Sarthe. Avant publication, la version finale doit être recalculée sur l’ensemble des résultats disponibles afin d’obtenir une vraie médiane départementale, paramètre par paramètre.</p>
+  <div class="note"><b>Important :</b> cette maquette évite volontairement les paramètres à zéro détecté et les minéraux courants sans enjeu sanitaire aux concentrations usuelles (calcium, magnésium, potassium, etc.).</div>
+</main>
+</body>
+</html>
